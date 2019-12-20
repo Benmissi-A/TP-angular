@@ -1,0 +1,118 @@
+<p>admin works!</p>
+<br>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger orange right" (click)='default()' href="#modal1" >
+  <i class="material-icons right">add</i> 
+Ajouter
+</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>{{titre}}</h4>
+    <!--Start form-->
+    <div class="row" >
+       <form class="col s12" [formGroup]="articleformForm" (ngSubmit)="onSubmit()">
+         <div class="row">
+           <div class="input-field col s6">
+             <input  id="titre" type="text" formControlName="titre" class="validate">
+             <label for="titre">Titre</label>
+           </div>
+           <div class="input-field col s6">
+             <input id="url" type="text" formControlName="url" class="validate">
+             <label for="url">Url</label>
+           </div>
+         </div>
+         <div class="row">
+             <div class="input-field col s6">
+               <input  id="contenu" type="text" formControlName="contenu" class="validate">
+               <label for="contenu">Contenu</label>
+             </div>
+             <div class="input-field col s6">
+               <input id="auteur" type="text" formControlName="auteur" class="validate">
+               <label for="auteur">Auteur</label>
+             </div>
+           </div>
+           <div class="row">
+               <button  [disabled]="voitureForm.invalid" class="btn waves-effect waves-light {{couleur}}" type="submit" name="action">{{bouton}}
+                   <i class="material-icons right">{{icon}}</i>
+               </button>
+                       
+           </div>
+       </form>
+     </div>
+    <!--End form-->
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+  </div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>URL</th>
+            <th>Contenu</th>
+            <th>Auteur</th>
+            <th colspan="2" class="center-align">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let art of articles">
+            <td>{{art.id}}</td>
+            <td>{{art.titre}}</td>
+            <td>{{art.url}}</td>
+            <td>{{art.contenu}}</td>
+            <td>{{art.auteur}}</td>
+            <td>
+              <a (click) = "onEdit(art)" class="waves-effect waves-light btn modal-trigger waves-green right" >
+                <i class="material-icons left">edit</i> 
+              Editer
+              </a>
+            </td>
+            <td>
+              <a (click)="onDelete(art.id)" class="waves-effect waves-light btn modal-trigger  red right"  >
+                <i class="material-icons left">delete</i> 
+              Supprimer
+              </a>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<!-- start modal -->
+<div id="supp" class="modal">
+  <div class="modal-content">
+    <h4>Voulez-vous supprimer?</h4>
+    <button class="waves-effect waves-light btn  waves-green red" type="button" (click)="remove()">Suppression</button>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat black text-white">Fermer</a>
+  </div>
+</div>
+<!--end Modal-->

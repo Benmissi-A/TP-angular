@@ -1,0 +1,13 @@
+<p>accueil works!</p>
+
+<article *ngFor="let art of articles">
+
+<div>
+    <img src="{{art.url}}" alt="img">
+</div>
+<section>
+    <h2>{{art.titre}}</h2>
+    <p>{{art.contenu}}</p>
+    <p>{{art.auteur}}</p>
+</section>
+</article>
